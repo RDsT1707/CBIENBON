@@ -1,0 +1,24 @@
+{
+  "name": "cbienbon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RDsT1707/CBIENBON.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RDsT1707/CBIENBON/issues"
+  },
+  "homepage": "https://github.com/RDsT1707/CBIENBON#readme",
+  "description": "",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.5"
+  }
+}
