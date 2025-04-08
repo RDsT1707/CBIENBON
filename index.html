@@ -3,10 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="CBIENBON Restaurant">
+    <title>CBIENBON Restaurant</title>
+    <link rel="stylesheet" href="./public/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">CBIENBON</a>
+            </div>
+            
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link nav__link--active">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#menu" class="nav__link">Menu</a></li>
+                    <li class="nav__item"><a href="#events" class="nav__link">Events</a></li>
+                    <li class="nav__item"><a href="#gallery" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="#chefs" class="nav__link">Chefs</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__book">
+                <a href="#reservation" class="btn btn--primary">Book a Table</a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img class="hero__bg-image" src="./public/assets/img/hero-bg.jpg" alt="">
+        <div class="container">
+          <div class="hero__content">
+            <h1 class="hero__title">Welcome to <span>CBIENBON</span></h1>
+            <p class="hero__subtitle">Delivering great food for more than 18 years!</p>
+      
+            <div class="hero__buttons">
+              <a href="#menu" class="btn btn--secondary">Our Menu</a>
+              <a href="#reservation" class="btn btn--primary">Book a Table</a>
+            </div>
+      
+            <!-- Vidéo masquée au départ -->
+            <div class="hero__video-container" id="videoContainer">
+              <video id="heroVideo" src="./public/assets/video/Restaurant Ad Video Template (Editable).mp4" controls></video>
+              <button id="closeVideo" class="btn--close">✖</button>
+            </div>
+      
+            <!-- Bouton Play -->
+            <div class="hero__play">
+              <a href="#" id="playVideo" aria-label="Watch Video">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <!-- Image en arrière-plan -->
+        <img src="./public/assets/img/about-bg.jpg" alt="" class="about__background">
+        
+        <div class="about__content">
+          <div class="about__text">
+            <h3 class="about__heading">Voluptatem dignissimos provident quasi corporis</h3>
+            <p class="about__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <ul class="about__features">
+              <li class="about__feature">
+                <i class="fas fa-check-circle"></i>
+                <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </li>
+              <li class="about__feature">
+                <i class="fas fa-check-circle"></i>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+              </li>
+              <li class="about__feature">
+                <i class="fas fa-check-circle"></i>
+                <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </li>
+            </ul>
+            <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          </div>
+          <div class="about__image">
+            <img src="./public/assets/img/about.jpg" alt="Restaurant Interior">
+          </div>
+        </div>
+      </section>
+
+
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__tag">Why Us</span>
+                <h2 class="section-title__main">Why Choose Our Restaurant</h2>
+            </div>
+            
+            <div class="why-us__grid">
+                <div class="why-box">
+                    <span class="why-box__number">01</span>
+                    <h4 class="why-box__title">Quality Ingredients</h4>
+                    <p class="why-box__text">We source only the freshest ingredients from local farmers and suppliers to ensure exceptional taste.</p>
+                </div>
+                
+                <div class="why-box">
+                    <span class="why-box__number">02</span>
+                    <h4 class="why-box__title">Expert Chefs</h4>
+                    <p class="why-box__text">Our team of professionally trained chefs brings years of culinary expertise to create memorable dining experiences.</p>
+                </div>
+                
+                <div class="why-box">
+                    <span class="why-box__number">03</span>
+                    <h4 class="why-box__title">Unique Atmosphere</h4>
+                    <p class="why-box__text">Enjoy your meal in our carefully designed space that combines comfort, elegance, and a warm atmosphere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__tag">MENU</span>
+                <h2 class="section-title__main">Check Our Tasty Menu</h2>
+            </div>
+            
+            <div class="menu-filter">
+                <ul>
+                    <li class="active" data-filter="all">All</li>
+                    <li data-filter="starters">Starters</li>
+                    <li data-filter="salads">Salads</li>
+                    <li data-filter="specialty">Specialty</li>
+                </ul>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/lobster-bisque.jpg" alt="Lobster Bisque">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Lobster Bisque</h4>
+                        <div class="menu-item__price">$5.95</div>
+                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/bread-barrel.jpg" alt="Bread Barrel">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Bread Barrel</h4>
+                        <div class="menu-item__price">$6.95</div>
+                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/cake.jpg" alt="Crab Cake">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Crab Cake</h4>
+                        <div class="menu-item__price">$7.95</div>
+                        <p class="menu-item__desc">A delicate crab cake served on a toasted roll with lettuce and tartar sauce</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/caesar-salad.jpg" alt="Caesar Selections">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Caesar Selections</h4>
+                        <div class="menu-item__price">$8.95</div>
+                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/tuscan-grilled.jpg" alt="Tuscan Grilled">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Tuscan Grilled</h4>
+                        <div class="menu-item__price">$9.95</div>
+                        <p class="menu-item__desc">Grilled chicken with provolone, artichoke hearts, and roasted red pesto</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/mozzarella.jpg" alt="Mozzarella Stick">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Mozzarella Stick</h4>
+                        <div class="menu-item__price">$4.95</div>
+                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__tag">Events</span>
+                <h2 class="section-title__main">Organize Your Events in our Restaurant</h2>
+            </div>
+            
+            <div class="events__slider">
+                <div class="event-slide event-slide--active">
+                    <div class="event-slide__image">
+                        <img src="./public/assets/img/event-custom.jpg" alt="Custom Party">
+                    </div>
+                    <div class="event-slide__content">
+                        <h3 class="event-slide__title">Custom Parties</h3>
+                        <div class="event-slide__price">$99</div>
+                        <p class="event-slide__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <ul class="event-slide__features">
+                            <li><i class="fas fa-check-circle"></i> Ut enim ad minim veniam</li>
+                            <li><i class="fas fa-check-circle"></i> Duis aute irure dolor</li>
+                            <li><i class="fas fa-check-circle"></i> Ullamco laboris nisi</li>
+                        </ul>
+                        <a href="#reservation" class="btn btn--primary">Book Event</a>
+                    </div>
+                </div>
+                
+                <!-- Additional slides can be added here -->
+            </div>
+            
+            <div class="events__dots">
+                <span class="dot dot--active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
+        <div class="container">
+          <div class="section-title">
+            <span class="section-title__tag">Reservation</span>
+            <h2 class="section-title__main">Book a Table</h2>
+          </div>
+      
+          <form class="form reservation__form">
+            <div class="form__row">
+              <div class="form__group">
+                <input type="text" name="name" class="form__input" placeholder="Your Name" required>
+              </div>
+              <div class="form__group">
+                <input type="email" name="email" class="form__input" placeholder="Your Email" required>
+              </div>
+              <div class="form__group">
+                <input type="tel" name="phone" class="form__input" placeholder="Your Phone" required>
+              </div>
+            </div>
+      
+            <div class="form__row">
+              <div class="form__group">
+                <input type="date" name="date" class="form__input" required>
+              </div>
+              <div class="form__group">
+                <input type="time" name="time" class="form__input" required>
+              </div>
+              <div class="form__group">
+                <input type="number" name="people" class="form__input" placeholder="# of people" min="1" max="20" required>
+              </div>
+            </div>
+      
+            <div class="form__group">
+              <textarea name="message" class="form__textarea" placeholder="Special Requests" rows="5"></textarea>
+            </div>
+      
+            <div class="form__action">
+              <button type="submit" class="btn btn--primary">Book a Table</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__tag">Gallery</span>
+                <h2 class="section-title__main">Some photos from Our Restaurant</h2>
+            </div>
+            
+            <div class="gallery__grid">
+                <a href="./public/assets/img/gallery/gallery-1.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-1.jpg" alt="Restaurant Interior">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-2.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-2.jpg" alt="Restaurant Bar">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-3.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-3.jpg" alt="Restaurant Interior">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-4.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-4.jpg" alt="Restaurant Bar">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-5.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-5.jpg" alt="Restaurant Interior">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-6.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-6.jpg" alt="Restaurant Bar">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-7.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-7.jpg" alt="Restaurant Interior">
+                </a>
+                <a href="./public/assets/img/gallery/gallery-8.jpg" class="gallery-item">
+                    <img src="./public/assets/img/gallery/gallery-8.jpg" alt="Restaurant Bar">
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Chefs Section -->
+    <section class="chefs" id="chefs">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__tag">Chefs</span>
+                <h2 class="section-title__main">Our Professional Chefs</h2>
+            </div>
+            
+            <div class="chefs__grid">
+                <div class="chef">
+                    <div class="chef__image">
+                        <img src="./public/assets/img/chefs/chefs-1.jpg" alt="Executive Chef">
+                    </div>
+                </div>
+                
+                <div class="chef">
+                    <div class="chef__image">
+                        <img src="./public/assets/img/chefs/chefs-2.jpg" alt="Pastry Chef">
+                    </div>
+                </div>
+                
+                <div class="chef">
+                    <div class="chef__image">
+                        <img src="./public/assets/img/chefs/chefs-3.jpg" alt="Head Chef">
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__tag">Contact</span>
+                <h2 class="section-title__main">Contact Us</h2>
+            </div>
+            
+            <div class="contact__map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6745611264424!2d2.3261807!3d48.870318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDUyJzEzLjEiTiAywrAxOSczNi4xIkU!5e0!3m2!1sen!2sus!4v1554667579929!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div class="contact__content">
+                <div class="contact__info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h5>Location:</h5>
+                            <p>123 Fifth Street, New York, NY 10160</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h5>Open Hours:</h5>
+                            <p>Monday-Friday: 11:00 AM - 10:00 PM<br>
+                               Saturday-Sunday: 10:00 AM - 11:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h5>Email:</h5>
+                            <p><a href="mailto:info@cbienbon.com">info@cbienbon.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h5>Call:</h5>
+                            <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="form contact__form">
+                    <div class="form__row">
+                        <div class="form__group">
+                            <input type="text" name="name" class="form__input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form__group">
+                            <input type="email" name="email" class="form__input" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form__group">
+                        <input type="text" name="subject" class="form__input" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="form__group">
+                        <textarea name="message" class="form__textarea" placeholder="Message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form__action">
+                        <button type="submit" class="btn btn--primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <h3 class="footer__logo">CBIENBON</h3>
+                    <p class="footer__address">123 Fifth Street<br>New York, NY 10160, USA</p>
+                    <p class="footer__contact">
+                        <strong>Phone:</strong> <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+                        <strong>Email:</strong> <a href="mailto:info@cbienbon.com">info@cbienbon.com</a>
+                    </p>
+                    <div class="footer__social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer__links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Subscribe to receive updates on special events and offers</p>
+                    <form class="newsletter-form">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn btn--primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; <span id="year"></span> <strong>CBIENBON</strong>. All Rights Reserved</p>
+                <div class="footer__credits">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#home" class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./public/js/main.js"></script>
 </body>
 </html>

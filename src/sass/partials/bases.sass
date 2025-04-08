@@ -1,0 +1,1069 @@
+
+$primary-color: #ffb03b
+$secondary-color: #5f5950
+$light-color: #ffffff
+$dark-color: #1a1814
+$gray-color: #777777
+$bg-overlay: rgba(0, 0, 0, 0.7)
+$font-primary: 'Poppins', sans-serif
+$font-secondary: 'Playfair Display', serif
+$transition: all 0.3s ease
+
+// Mixins
+@mixin flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin flex-between
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+@mixin section-padding
+  padding: 80px 0
+
+/* Base Styles */
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+  scroll-behavior: smooth
+
+body
+  font-family: $font-primary
+  color: $secondary-color
+  background-color: $light-color
+  line-height: 1.6
+
+a
+  text-decoration: none
+  color: $secondary-color
+  transition: $transition
+  
+  &:hover
+    color: $primary-color
+
+h1, h2, h3, h4, h5, h6
+  font-family: $font-secondary
+
+.container
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 15px
+
+img
+  max-width: 100%
+  height: auto
+
+.section-title
+  text-align: center
+  margin-bottom: 50px
+  
+  &__tag
+    display: block
+    font-size: 14px
+    font-weight: 500
+    color: $primary-color
+    margin-bottom: 5px
+    text-transform: uppercase
+    letter-spacing: 1px
+  
+  &__main
+    font-size: 36px
+    font-weight: 700
+    margin-bottom: 20px
+    color: $secondary-color
+    
+    .bg-dark &
+      color: $light-color
+
+// Button styles
+.btn
+  display: flex
+  padding: 8px 24px
+  border-radius: 50px
+  font-weight: 500
+  transition: $transition
+  text-align: right
+  
+  &--primary
+    color: $light-color
+    border: 2px solid $primary-color
+    
+    &:hover
+      background: $primary-color
+      color: $light-color
+  
+  &--secondary
+    background: transparent
+    color: $light-color
+    border: 2px solid $light-color
+    
+    &:hover
+      background: $light-color
+      color: $primary-color
+
+/* Header */
+.header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 100
+  padding: 15px 0
+  transition: $transition
+  background: rgba($dark-color, 0.8)
+  
+  .container
+    @include flex-between
+  
+  &__book
+    display: none
+    
+    @media (min-width: 992px)
+      display: block
+
+  &-scrolled
+    background: rgba($dark-color, 0.95)
+    padding: 10px 0
+
+.logo a
+  font-family: $font-secondary
+  font-size: 28px
+  font-weight: 700
+  color: $light-color
+  text-decoration: none
+
+.nav
+  @media (max-width: 991px)
+    position: fixed
+    top: 0
+    right: -300px
+    width: 300px
+    height: 100vh
+    background: rgba($dark-color, 0.95)
+    padding: 80px 30px
+    transition: $transition
+    z-index: 101
+    
+    &.active
+      right: 0
+  
+  &__list
+    display: flex
+    list-style: none
+    
+    @media (max-width: 991px)
+      flex-direction: column
+  
+  &__item
+    margin: 0 10px
+    
+    @media (max-width: 991px)
+      margin: 15px 0
+  
+  &__link
+    color: rgba($light-color, 0.7)
+    font-size: 14px
+    font-weight: 500
+    padding: 10px 0
+    
+    &--active, &:hover
+      color: $light-color
+    
+    &--active
+      position: relative
+      
+      &:after
+        content: ''
+        position: absolute
+        bottom: -5px
+        left: 0
+        width: 100%
+        height: 2px
+        background: $primary-color
+
+.nav-toggle
+  display: none
+  background: none
+  border: none
+  color: $light-color
+  font-size: 24px
+  cursor: pointer
+  
+  @media (max-width: 991px)
+    display: block
+
+/* Hero Section */
+.hero
+  width: 100%
+  min-height: 100vh
+  background: url('./public/assets/img/hero-bg.jpg') center center/cover no-repeat
+  position: relative
+  padding: 0
+
+  &__bg-image
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    z-index: -1
+
+  &:before
+    content: ""
+    background: rgba(0, 0, 0, 0.6)
+    position: absolute
+    bottom: 0
+    top: 0
+    left: 0
+    right: 0
+
+  .container
+    position: relative
+    z-index: 1
+
+  &__content
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+    min-height: 100vh
+    padding: 120px 0
+
+  &__title
+    margin: 0 0 10px 0
+    font-size: 48px
+    font-weight: 700
+    color: $light-color
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+
+    span
+      color: $primary-color
+
+    @media (max-width: 768px)
+      font-size: 36px
+
+    @media (max-width: 576px)
+      font-size: 28px
+
+  &__subtitle
+    color: $light-color
+    font-size: 18px
+    margin-bottom: 30px
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)
+
+  &__buttons
+    display: flex
+    gap: 15px
+    margin-bottom: 30px
+
+    @media (max-width: 576px)
+      flex-direction: column
+      gap: 10px
+
+  &__play
+    margin-top: 15px
+
+    a
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      width: 64px
+      height: 64px
+      border-radius: 50%
+      background: $primary-color
+      transition: $transition
+
+    i
+      color: $light-color
+      font-size: 24px
+
+  &__video-container
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.85)
+    display: none
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    z-index: 1000
+
+    &.active
+      display: flex
+
+    video
+      width: 80%
+      max-width: 900px
+      border: 4px solid #fff
+      border-radius: 10px
+
+    .btn--close
+      margin-top: 20px
+      background: $primary-color
+      color: $light-color
+      border: none
+      padding: 10px 20px
+      font-size: 1.2rem
+      border-radius: 5px
+      cursor: pointer
+      transition: $transition
+
+      &:hover
+        background: darken($primary-color, 10%)
+
+
+/* About Section */
+.about
+  @include section-padding
+  position: relative
+  overflow: hidden
+  min-height: 80vh // Augmente la hauteur de la section
+  
+  // L'image en arrière-plan
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: rgba(0, 0, 0, 0.7) // Overlay sombre pour la lisibilité
+    z-index: 1
+  
+  // L'image about-bg.jpg en arrière-plan absolue
+  &__background
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    z-index: 0
+  
+  &__content
+    position: relative
+    z-index: 2
+    display: flex
+    align-items: center
+    height: 100%
+    
+    @media (max-width: 991px)
+      flex-direction: column
+  
+  &__text
+    flex: 0 0 50% // Exactement 50% de l'écran à gauche
+    color: #fff
+    padding-right: 30px
+    max-width: 40%
+  
+  &__heading
+    font-size: 28px
+    font-weight: 700
+    margin-bottom: 20px
+  
+  &__desc
+    margin-bottom: 20px
+    line-height: 1.6
+  
+  &__features
+    list-style: none
+    margin-bottom: 20px
+  
+  &__feature
+    position: relative
+    margin-bottom: 15px
+    padding-left: 28px
+    
+    i
+      position: absolute
+      left: 0
+      top: 5px
+      color: #ffd900aa
+      border: $primary-color solid 1px
+      border-radius: 50px
+      font-size: 18px
+  
+  &__image
+    flex: 0 0 50% // Exactement 50% de l'écran à droite
+    height: 100%
+    max-width: 50%
+    
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      border: solid 5px #ffffff3c
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3)
+/* Why Us Section */
+.why-us
+  @include section-padding
+  background: $dark-color
+  color: $primary-color
+  
+  &__grid
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 20px
+    
+    @media (max-width: 991px)
+      grid-template-columns: repeat(2, 1fr)
+    
+    @media (max-width: 768px)
+      grid-template-columns: 1fr
+
+.why-box
+  padding: 40px 30px
+  background: rgba(255, 255, 255, 0.05)
+  border-radius: 5px
+  text-align: center
+  transition: $transition
+  
+  &__number
+    font-size: 48px
+    font-weight: 700
+    margin-bottom: 15px
+    color: $primary-color
+    display: block
+    
+  &__title
+    color: #ffffff
+    font-size: 24px
+    font-weight: 600
+    margin-bottom: 15px
+    
+  &__text
+    color: #ffffff
+    line-height: 1.6
+
+.section-title
+  text-align: left  // Aligne tout le bloc à gauche
+  
+  &__tag
+    color: #ffffff  // Met "WHY US" en blanc
+    text-align: left  // Assure l'alignement à gauche
+  
+  &__main
+    color: $primary-color  // Garde la couleur orange pour le titre principal
+    text-align: left  // Assure l'alignement à gauche
+    
+    &:hover
+      color: $primary-color  // Garde la même couleur au survol
+/* Menu Section */
+// Utilisation de vos variables existantes
+.menu
+  @include section-padding
+  background: $dark-color
+  color: $light-color
+  
+  &-filter
+    text-align: center
+    margin-bottom: 30px
+    
+    ul
+      display: flex
+      justify-content: center
+      list-style: none
+      padding: 0
+      margin: 0
+      
+      li
+        cursor: pointer
+        display: inline-block
+        padding: 8px 16px
+        margin: 0 5px
+        font-size: 18px
+        font-weight: 500
+        color: $light-color
+        transition: $transition
+        
+        &.active
+          color: $primary-color
+        
+        &:hover
+          color: $primary-color
+  
+  &-items
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 30px
+    
+    @media (max-width: 768px)
+      grid-template-columns: 1fr
+  
+  &-item
+    display: flex
+    align-items: center
+    
+    &__image
+      width: 80px
+      height: 80px
+      border-radius: 50%
+      overflow: hidden
+      margin-right: 20px
+      flex-shrink: 0
+      border: 4px solid rgba(255, 255, 255, 0.1)
+      
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    
+    &__content
+      flex: 1
+    
+    &__title
+      font-weight: 600
+      font-size: 18px
+      color: $light-color
+      position: relative
+      padding-right: 100px
+      
+      &::after
+        content: ""
+        position: absolute
+        width: 50%
+        height: 1px
+        border-top: 1px dotted rgba(255, 255, 255, 0.3)
+        top: 50%
+        margin-left: 10px
+    
+    &__price
+      position: absolute
+      right: 0
+      top: 0
+      font-weight: 700
+      color: $primary-color
+      font-size: 18px
+    
+    &__desc
+      font-style: italic
+      font-size: 14px
+      color: $gray-color
+      margin-top: 5px
+
+// Conserver l'alignement à gauche pour les titres de section comme vous l'aviez demandé
+.section-title
+  text-align: left
+  margin-bottom: 40px
+  
+  &__tag
+    color: $light-color
+    text-transform: uppercase
+    font-size: 14px
+    font-weight: 500
+    position: relative
+    padding-left: 10px
+    letter-spacing: 2px
+    display: inline-block
+    margin-bottom: 15px
+    text-align: left
+  
+  &__main
+    color: $primary-color
+    font-size: 36px
+    font-weight: 700
+    position: relative
+    font-family: $font-secondary
+    text-align: left
+    
+    &:hover
+      color: $primary-color
+
+/* Events Section */
+.events
+  @include section-padding
+  position: relative
+  color: $light-color
+  background: url('../assets/img/events-bg.jpg') center center / cover no-repeat
+  z-index: 1
+
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.6) // ombre sombre
+    z-index: 1
+
+  .container
+    position: relative
+    z-index: 2
+
+.dot
+  width: 12px
+  height: 12px
+  background-color: rgba($light-color, 0.3)
+  border-radius: 50%
+  margin: 0 5px
+  cursor: pointer
+  transition: $transition
+  
+  &--active
+    background-color: $primary-color
+
+.event-slide
+  display: none
+  
+  &--active
+    display: flex
+    flex-wrap: wrap
+    gap: 30px
+  
+  &__image
+    flex: 1 1 450px
+    
+    img
+      width: 100%
+      height: 400px
+      object-fit: cover
+      border-radius: 8px
+    
+    @media (max-width: 992px)
+      flex: 1 1 100%
+  
+  &__content
+    flex: 1 1 450px
+    padding: 0 0 0 30px
+    
+    @media (max-width: 992px)
+      padding: 30px 0 0
+      flex: 1 1 100%
+  
+  &__title
+    color: $primary-color
+    font-size: 24px
+    margin-bottom: 10px
+  
+  &__price
+    font-size: 20px
+    color: $light-color
+    font-weight: 600
+    display: block
+    margin-bottom: 15px
+  
+  &__desc
+    margin-bottom: 15px
+    color: rgba($light-color, 0.8)
+  
+  &__features
+    list-style: none
+    margin-bottom: 25px
+    
+    li
+      margin-bottom: 10px
+      
+      i
+        color: $primary-color
+        margin-right: 10px
+
+/* Reservation Section */
+.reservation
+  @include section-padding
+  background-color: $dark-color
+  position: relative
+
+  &:before
+    content: ""
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background: $bg-overlay
+    z-index: 1
+
+  .container
+    position: relative
+    z-index: 2
+
+  .section-title__tag,
+  .section-title__main
+    color: $light-color
+
+  &__form
+    max-width: 900px
+    margin: 0 auto
+
+.form
+  &__row
+    display: flex
+    flex-wrap: wrap
+    margin: 0 -10px 20px
+
+    @media (max-width: 576px)
+      flex-direction: column
+
+  &__group
+    flex: 1 1 300px
+    padding: 0 10px
+    margin-bottom: 20px
+
+  &__input,
+  &__textarea
+    width: 100%
+    padding: 12px 15px
+    border: 1px solid rgba($light-color, 0.1)
+    background-color: rgba($light-color, 0.05)
+    color: $light-color
+    border-radius: 5px
+    transition: $transition
+    border: solid 1px $primary-color 
+    border-color: rgba($primary-color, 0.5)
+
+    &::placeholder
+      color: rgba($light-color, 0.7)
+
+    &:focus
+      border-color: $primary-color
+      outline: none
+
+  &__textarea
+    height: 150px
+    resize: vertical
+
+  &__action
+    text-align: center
+    margin-top: 20px
+
+/* Gallery Section */
+.gallery
+  @include section-padding
+  background-color: $dark-color
+  
+  &__grid
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
+    gap: 3px
+    
+    @media (max-width: 576px)
+      grid-template-columns: 1fr
+
+.gallery-item
+  overflow: hidden
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+  
+  img
+    width: 100%
+    height: 200px
+    object-fit: cover
+    transition: $transition
+    
+    &:hover
+      transform: scale(1.1)
+
+/* Chefs Section */
+.chefs
+  @include section-padding
+  background-color: $dark-color
+  
+  &__grid
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+    gap: 30px
+    
+    @media (max-width: 576px)
+      grid-template-columns: 1fr
+
+.chef
+  overflow: hidden
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
+  
+  &__image
+    overflow: hidden
+    
+    img
+      width: 100%
+      height: 500px
+      object-fit: cover
+      transition: $transition
+      
+      &:hover
+        transform: scale(1.1)
+  
+
+/* Contact Section */
+.contact
+  @include section-padding
+  background-color: $dark-color
+  
+  &__map
+    height: 400px
+    margin-bottom: 50px
+    border-radius: 8px
+    overflow: hidden
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
+    
+    iframe
+      width: 100%
+      height: 100%
+      border: 0
+  
+  &__content
+    display: flex
+    flex-wrap: wrap
+    gap: 30px
+    
+    @media (max-width: 992px)
+      flex-direction: column
+  
+  &__info
+    flex: 1 1 350px
+  
+  &__form
+    flex: 1 1 500px
+    
+    .form__input, .form__textarea
+      background-color: #fff
+      color: $secondary-color
+      border: 1px solid #ddd
+      
+      &::placeholder
+        color: $gray-color
+
+.info-item
+  display: flex
+  margin-bottom: 30px
+  
+  i
+    width: 44px
+    height: 44px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 50%
+    background: $primary-color
+    color: $light-color
+    font-size: 20px
+    margin-right: 15px
+    flex-shrink: 0
+  
+  div
+    h5
+      font-size: 18px
+      color: $secondary-color
+      font-weight: 600
+      margin-bottom: 5px
+    
+    p
+      color: $gray-color
+      margin-bottom: 0
+      line-height: 1.5
+      
+      a
+        color: $gray-color
+        
+        &:hover
+          color: $primary-color
+
+/* Footer */
+.footer
+  background-color: $dark-color
+  padding: 60px 0 0
+  color: $gray-color
+  
+  &__content
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin-bottom: 30px
+    gap: 30px
+    
+    @media (max-width: 768px)
+      flex-direction: column
+      text-align: center
+  
+  &__info
+    flex: 1 1 300px
+  
+  &__logo
+    font-size: 28px
+    color: $primary-color
+    margin-bottom: 15px
+    font-family: $font-secondary
+  
+  &__address
+    margin-bottom: 15px
+  
+  &__contact
+    margin-bottom: 20px
+    
+    strong
+      color: $light-color
+    
+    a
+      color: $gray-color
+      
+      &:hover
+        color: $primary-color
+  
+  &__social
+    display: flex
+    gap: 10px
+    
+    @media (max-width: 768px)
+      justify-content: center
+    
+    a
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 36px
+      height: 36px
+      background: rgba(255, 255, 255, 0.08)
+      border-radius: 50%
+      color: $light-color
+      transition: $transition
+      
+      &:hover
+        background: $primary-color
+  
+  &__links
+    flex: 1 1 200px
+    
+    h4
+      color: $light-color
+      font-size: 18px
+      margin-bottom: 20px
+      position: relative
+      padding-bottom: 10px
+      
+      &:after
+        content: ''
+        position: absolute
+        display: block
+        width: 50px
+        height: 2px
+        background: $primary-color
+        bottom: 0
+        left: 0
+        
+        @media (max-width: 768px)
+          left: 50%
+          transform: translateX(-50%)
+    
+    ul
+      list-style: none
+      
+      li
+        margin-bottom: 10px
+        
+        a
+          color: $gray-color
+          transition: $transition
+          
+          &:hover
+            color: $primary-color
+            padding-left: 5px
+  
+  &__newsletter
+    flex: 1 1 300px
+    
+    h4
+      color: $light-color
+      font-size: 18px
+      margin-bottom: 20px
+      position: relative
+      padding-bottom: 10px
+      
+      &:after
+        content: ''
+        position: absolute
+        display: block
+        width: 50px
+        height: 2px
+        background: $primary-color
+        bottom: 0
+        left: 0
+        
+        @media (max-width: 768px)
+          left: 50%
+          transform: translateX(-50%)
+    
+    p
+      margin-bottom: 20px
+  
+  &__bottom
+    text-align: center
+    padding: 30px 0
+    border-top: 1px solid rgba(255, 255, 255, 0.1)
+    
+    p
+      margin-bottom: 10px
+      
+      strong
+        color: $primary-color
+  
+  &__credits
+    a
+      color: $gray-color
+      
+      &:hover
+        color: $primary-color
+
+.newsletter-form
+  position: relative
+  
+  input
+    height: 42px
+    width: 100%
+    padding: 0 15px
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    background: rgba(255, 255, 255, 0.05)
+    color: $light-color
+    border-radius: 50px
+    transition: $transition
+    
+    &:focus
+      outline: none
+      border-color: $primary-color
+  
+  button
+    position: absolute
+    right: 0
+    top: 0
+    height: 42px
+    padding: 0 15px
+    background: $primary-color
+    border: none
+    border-radius: 0 50px 50px 0
+    color: $light-color
+    transition: $transition
+    
+    &:hover
+      background: darken($primary-color, 10%)
+
+.back-to-top
+  position: fixed
+  right: 15px
+  bottom: 15px
+  width: 40px
+  height: 40px
+  background: $primary-color
+  color: $light-color
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 99
+  transition: $transition
+  visibility: hidden
+  opacity: 0
+  
+  &.active
+    visibility: visible
+    opacity: 1
+  
+  &:hover
+    background: darken($primary-color, 10%)

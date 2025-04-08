@@ -10,14 +10,15 @@
     "url": "git+https://github.com/RDsT1707/CBIENBON.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "rayan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RDsT1707/CBIENBON/issues"
   },
   "homepage": "https://github.com/RDsT1707/CBIENBON#readme",
-  "description": "",
+  "description": "c",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.5"
   }
