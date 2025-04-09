@@ -134,43 +134,50 @@
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
-                <span class="section-title__tag">MENU</span>
+                <span class="section-title__tag">OUR MENU</span>
                 <h2 class="section-title__main">Check Our Tasty Menu</h2>
             </div>
             
+            <!-- Cases à cocher cachées -->
+            <input type="radio" id="filter-all" name="filter" class="filter-checkbox" checked>
+            <input type="radio" id="filter-starters" name="filter" class="filter-checkbox">
+            <input type="radio" id="filter-salads" name="filter" class="filter-checkbox">
+            <input type="radio" id="filter-specialty" name="filter" class="filter-checkbox">
+            
             <div class="menu-filter">
-                <ul>
-                    <li class="active" data-filter="all">All</li>
-                    <li data-filter="starters">Starters</li>
-                    <li data-filter="salads">Salads</li>
-                    <li data-filter="specialty">Specialty</li>
+                <ul role="tablist" aria-label="Menu categories">
+                    <li><label for="filter-all" role="tab" tabindex="0" aria-selected="true">All</label></li>
+                    <li><label for="filter-starters" role="tab" tabindex="0" aria-selected="false">Starters</label></li>
+                    <li><label for="filter-salads" role="tab" tabindex="0" aria-selected="false">Salads</label></li>
+                    <li><label for="filter-specialty" role="tab" tabindex="0" aria-selected="false">Specialty</label></li>
                 </ul>
             </div>
             
             <div class="menu-items">
-                <div class="menu-item">
+                <!-- Starters -->
+                <div class="menu-item starters all">
                     <div class="menu-item__image">
                         <img src="./public/assets/img/menu/lobster-bisque.jpg" alt="Lobster Bisque">
                     </div>
                     <div class="menu-item__content">
                         <h4 class="menu-item__title">Lobster Bisque</h4>
                         <div class="menu-item__price">$5.95</div>
-                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                        <p class="menu-item__desc">Creamy lobster velouté prepared with fresh vegetables and a touch of cognac</p>
                     </div>
                 </div>
                 
-                <div class="menu-item">
+                <div class="menu-item starters all">
                     <div class="menu-item__image">
                         <img src="./public/assets/img/menu/bread-barrel.jpg" alt="Bread Barrel">
                     </div>
                     <div class="menu-item__content">
                         <h4 class="menu-item__title">Bread Barrel</h4>
                         <div class="menu-item__price">$6.95</div>
-                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                        <p class="menu-item__desc">Assortment of artisanal breads served with herb butter and olive tapenade</p>
                     </div>
                 </div>
                 
-                <div class="menu-item">
+                <div class="menu-item starters all">
                     <div class="menu-item__image">
                         <img src="./public/assets/img/menu/cake.jpg" alt="Crab Cake">
                     </div>
@@ -181,20 +188,55 @@
                     </div>
                 </div>
                 
-                <div class="menu-item">
+                <div class="menu-item starters all">
                     <div class="menu-item__image">
-                        <img src="./public/assets/img/menu/caesar-salad.jpg" alt="Caesar Selections">
+                        <img src="./public/assets/img/menu/mozzarella.jpg" alt="Mozzarella Sticks">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Mozzarella Sticks</h4>
+                        <div class="menu-item__price">$4.95</div>
+                        <p class="menu-item__desc">Breaded and fried mozzarella sticks, served with homemade marinara sauce</p>
+                    </div>
+                </div>
+                
+                <!-- Salads -->
+                <div class="menu-item salads all">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/caesar.jpg" alt="Caesar Salad">
                     </div>
                     <div class="menu-item__content">
                         <h4 class="menu-item__title">Caesar Selections</h4>
                         <div class="menu-item__price">$8.95</div>
-                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                        <p class="menu-item__desc">Fresh salad with romaine lettuce, homemade croutons, parmesan and our signature Caesar dressing</p>
                     </div>
                 </div>
                 
-                <div class="menu-item">
+                <div class="menu-item salads all">
                     <div class="menu-item__image">
-                        <img src="./public/assets/img/menu/tuscan-grilled.jpg" alt="Tuscan Grilled">
+                        <img src="./public/assets/img/menu/greek-salad.jpg" alt="Greek Salad">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Greek Salad</h4>
+                        <div class="menu-item__price">$9.95</div>
+                        <p class="menu-item__desc">Fresh tomatoes, cucumber, red onion, olives and feta cheese with olive oil vinaigrette</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item salads all">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/spinach-salad.jpg" alt="Spinach Salad">
+                    </div>
+                    <div class="menu-item__content">
+                        <h4 class="menu-item__title">Spinach Salad</h4>
+                        <div class="menu-item__price">$9.95</div>
+                        <p class="menu-item__desc">Fresh spinach with mushrooms, hard-boiled egg and warm bacon vinaigrette</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty -->
+                <div class="menu-item specialty all">
+                    <div class="menu-item__image">
+                        <img src="./public/assets/img/menu/tuscan-grilled.jpg" alt="Tuscan Grilled Chicken">
                     </div>
                     <div class="menu-item__content">
                         <h4 class="menu-item__title">Tuscan Grilled</h4>
@@ -203,19 +245,25 @@
                     </div>
                 </div>
                 
-                <div class="menu-item">
+                <div class="menu-item specialty all">
                     <div class="menu-item__image">
-                        <img src="./public/assets/img/menu/mozzarella.jpg" alt="Mozzarella Stick">
+                        <img src="./public/assets/img/menu/lobster-roll.jpg" alt="Lobster Roll">
                     </div>
                     <div class="menu-item__content">
-                        <h4 class="menu-item__title">Mozzarella Stick</h4>
-                        <div class="menu-item__price">$4.95</div>
-                        <p class="menu-item__desc">Lorem, deren, trataro, filede, nerada</p>
+                        <h4 class="menu-item__title">Lobster Roll</h4>
+                        <div class="menu-item__price">$12.95</div>
+                        <p class="menu-item__desc">Fresh lobster meat served in a brioche bun with light mayonnaise and herbs</p>
                     </div>
                 </div>
             </div>
         </div>
+    
+        <a href="#" class="back-to-top" aria-label="Back to top">
+            <span class="arrow-up"></span>
+        </a>
     </section>
+
+   
 
     <!-- Events Section -->
     <section class="events" id="events">
@@ -349,24 +397,54 @@
                 <div class="chef">
                     <div class="chef__image">
                         <img src="./public/assets/img/chefs/chefs-1.jpg" alt="Executive Chef">
+                        <div class="chef__info">
+                            <h3>Walter White</h3>
+                            <p>Master Chef</p>
+                            <div class="socials">
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-square-facebook"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="chef">
                     <div class="chef__image">
                         <img src="./public/assets/img/chefs/chefs-2.jpg" alt="Pastry Chef">
+                        <div class="chef__info">
+                            <h3>Sarah Jhonson</h3>
+                            <p>Pastry Chef</p>
+                            <div class="socials">
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-square-facebook"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="chef">
                     <div class="chef__image">
                         <img src="./public/assets/img/chefs/chefs-3.jpg" alt="Head Chef">
-                    </div> 
+                        <div class="chef__info">
+                            <h3>Willian Anderson</h3>
+                            <p>Cook</p>
+                            <div class="socials">
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-square-facebook"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -493,9 +571,11 @@
             <i class="fas fa-arrow-up"></i>
         </a>
     </footer>
+    <a href="#top" id="scrollToTopBtn">↑</a>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./public/js/main.js"></script>
+    <script src="./public/js/auto.js"></script>
 </body>
 </html>

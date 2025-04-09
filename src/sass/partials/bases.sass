@@ -1,5 +1,5 @@
 
-$primary-color: #ffb03b
+$primary-color: #fca41f
 $secondary-color: #5f5950
 $light-color: #ffffff
 $dark-color: #1a1814
@@ -397,13 +397,21 @@ img
     flex: 0 0 50% // Exactement 50% de l'écran à droite
     height: 100%
     max-width: 50%
-    
+    position: relative
+    overflow: hidden // pour éviter que l'image dépasse du cadre
+
     img
       width: 100%
       height: 100%
       object-fit: cover
       border: solid 5px #ffffff3c
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3)
+      transition: transform 0.3s ease, box-shadow 0.3s ease
+
+    &:hover
+      img
+        transform: scale(1.1) // Zoom légèrement sur l'image
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) // Augmente l'ombre pour plus de profondeur
 /* Why Us Section */
 .why-us
   @include section-padding
@@ -427,23 +435,36 @@ img
   border-radius: 5px
   text-align: center
   transition: $transition
-  
+
   &__number
     font-size: 48px
     font-weight: 700
     margin-bottom: 15px
     color: $primary-color
     display: block
-    
-  &__title
+
+  &__title,
+  &__text
     color: #ffffff
+    transition: $transition
+
+  &__title
     font-size: 24px
     font-weight: 600
     margin-bottom: 15px
-    
+
   &__text
-    color: #ffffff
     line-height: 1.6
+
+  &:hover
+    background-color: $primary-color
+
+    // changement de couleur pour les textes enfants au hover
+    .why-box__title,
+    .why-box__text,
+    .why-box__number
+      color: $light-color
+
 
 .section-title
   text-align: left  // Aligne tout le bloc à gauche
@@ -455,55 +476,170 @@ img
   &__main
     color: $primary-color  // Garde la couleur orange pour le titre principal
     text-align: left  // Assure l'alignement à gauche
-    
-    &:hover
-      color: $primary-color  // Garde la même couleur au survol
+  
 /* Menu Section */
 // Utilisation de vos variables existantes
+// Variables
+$dark-color: #0c0b09
+$light-color: #fff
+$primary-color: #cda45e
+$gray-color: #aaa
+$transition: all 0.3s ease
+
+// Reset et styles de base
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  font-family: 'Open Sans', sans-serif
+  background-color: $dark-color
+  color: $light-color
+  line-height: 1.6
+
+.container
+  width: 90%
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 15px
+
+a
+  text-decoration: none
+  color: $light-color
+  transition: $transition
+
+// Header/Navigation
+header
+  padding: 20px 0
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 100
+  background-color: rgba(12, 11, 9, 0.9)
+
+  .container
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+  .logo
+    font-size: 28px
+    font-weight: 700
+    letter-spacing: 1px
+    color: $light-color
+
+  nav ul
+    display: flex
+    list-style: none
+
+    li
+      margin: 0 15px
+
+      a
+        font-size: 14px
+        font-weight: 600
+        padding: 10px 0
+        text-transform: uppercase
+
+        &:hover,
+        &.active
+          color: $primary-color
+
+  .book-table
+    padding: 8px 24px
+    border: 2px solid $primary-color
+    color: $light-color
+    border-radius: 50px
+    font-weight: 500
+    font-size: 14px
+    text-transform: uppercase
+    transition: 0.3s
+
+    &:hover
+      background: $primary-color
+      color: $dark-color
+
+// Menu Section
 .menu
-  @include section-padding
+  padding: 120px 0 60px
   background: $dark-color
   color: $light-color
-  
-  &-filter
+
+  .section-title
     text-align: center
-    margin-bottom: 30px
-    
+    margin-bottom: 40px
+
+    &__tag
+      display: block
+      color: $primary-color
+      font-size: 14px
+      font-weight: 500
+      margin-bottom: 10px
+
+    &__main
+      font-size: 42px
+      color: $primary-color
+      font-weight: 400
+
+  // Cacher les cases à cocher
+  .filter-checkbox
+    position: absolute
+    opacity: 0
+    pointer-events: none
+
+  // Styles du filtre
+  .menu-filter
+    text-align: center
+    margin-bottom: 40px
+
     ul
       display: flex
       justify-content: center
       list-style: none
       padding: 0
       margin: 0
-      
-      li
-        cursor: pointer
-        display: inline-block
-        padding: 8px 16px
-        margin: 0 5px
-        font-size: 18px
-        font-weight: 500
-        color: $light-color
-        transition: $transition
-        
-        &.active
-          color: $primary-color
-        
-        &:hover
-          color: $primary-color
-  
-  &-items
+
+    li
+      margin: 0 10px
+
+    label
+      cursor: pointer
+      display: inline-block
+      padding: 8px 16px
+      font-size: 16px
+      font-weight: 500
+      color: $light-color
+      transition: $transition
+
+      &:hover
+        color: $primary-color
+
+  // Grille d'éléments du menu
+  .menu-items
     display: grid
     grid-template-columns: repeat(2, 1fr)
     gap: 30px
-    
+
     @media (max-width: 768px)
       grid-template-columns: 1fr
-  
-  &-item
-    display: flex
+
+  // Styles par défaut pour les éléments du menu
+  .menu-item
+    display: none
+    opacity: 0
+    transition: opacity 0.4s ease, transform 0.3s ease
+    transform: translateY(20px)
     align-items: center
-    
+
+    // Par défaut, montrer tous les éléments avec la classe "all"
+    &.all
+      display: flex
+      opacity: 1
+      transform: translateY(0)
+
+    // Styliser l'image du menu
     &__image
       width: 80px
       height: 80px
@@ -512,46 +648,50 @@ img
       margin-right: 20px
       flex-shrink: 0
       border: 4px solid rgba(255, 255, 255, 0.1)
-      
+
       img
         width: 100%
         height: 100%
         object-fit: cover
-    
+
+    // Styliser le contenu du menu
     &__content
       flex: 1
-    
+      position: relative
+
+    // Styliser le titre
     &__title
       font-weight: 600
       font-size: 18px
       color: $light-color
       position: relative
-      padding-right: 100px
-      
+      padding-right: 70px
+
       &::after
         content: ""
         position: absolute
-        width: 50%
-        height: 1px
-        border-top: 1px dotted rgba(255, 255, 255, 0.3)
+        left: calc(100% - 60px)
+        right: 60px
         top: 50%
-        margin-left: 10px
-    
+        border-top: 1px dotted $gray-color
+
+    // Styliser le prix
     &__price
       position: absolute
+      color: $primary-color
       right: 0
       top: 0
       font-weight: 700
       color: $primary-color
       font-size: 18px
-    
+
+    // Styliser la description
     &__desc
       font-style: italic
       font-size: 14px
       color: $gray-color
       margin-top: 5px
 
-// Conserver l'alignement à gauche pour les titres de section comme vous l'aviez demandé
 .section-title
   text-align: left
   margin-bottom: 40px
@@ -764,6 +904,8 @@ img
       transform: scale(1.1)
 
 /* Chefs Section */
+$transition: all 0.7s ease-in-out;
+
 .chefs
   @include section-padding
   background-color: $dark-color
@@ -777,10 +919,12 @@ img
       grid-template-columns: 1fr
 
 .chef
+  position: relative
   overflow: hidden
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
-  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1)
+
   &__image
+    position: relative
     overflow: hidden
     
     img
@@ -788,9 +932,41 @@ img
       height: 500px
       object-fit: cover
       transition: $transition
+      filter: brightness(1) // Réinitialisation de la luminosité pour l'effet hover
       
-      &:hover
-        transform: scale(1.1)
+    &:hover
+      img
+        filter: brightness(0.5) // Assombrissement de l'image au survol
+
+    .chef__info
+      position: absolute
+      top: 85%
+      left: 50%
+      transform: translate(-50%, -50%)
+      color: white
+      text-align: center
+      opacity: 0
+      visibility: hidden
+      transition: opacity 0.3s, visibility 0.3s
+
+      h3, p
+        margin: 5px 0
+      
+      .socials
+        margin-top: 10px
+
+        .social-icon
+          margin: 0 10px
+          color: white
+          text-decoration: none
+          font-size: 1.2rem
+      
+  &:hover
+    .chef__image
+      .chef__info
+        opacity: 1
+        visibility: visible
+
   
 
 /* Contact Section */
@@ -1067,3 +1243,23 @@ img
   
   &:hover
     background: darken($primary-color, 10%)
+
+
+#scrollToTopBtn
+  position: fixed
+  bottom: 20px
+  right: 20px
+  background-color: $primary-color
+  color: white
+  text-decoration: none
+  border: none
+  border-radius: 50px
+  padding: 10px 20px
+  font-size: 16px
+  cursor: pointer
+  display: none 
+  z-index: 2
+
+  &:hover
+    background-color: #ffffff
+    color: $primary-color
