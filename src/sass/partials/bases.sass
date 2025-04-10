@@ -1,4 +1,4 @@
-
+// Variables
 $primary-color: #fca41f
 $secondary-color: #5f5950
 $light-color: #ffffff
@@ -8,6 +8,15 @@ $bg-overlay: rgba(0, 0, 0, 0.7)
 $font-primary: 'Poppins', sans-serif
 $font-secondary: 'Playfair Display', serif
 $transition: all 0.3s ease
+
+// Breakpoints
+$mobile-s: 320px
+$mobile-m: 375px
+$mobile-l: 425px
+$tablet: 768px
+$laptop: 992px
+$desktop: 1200px
+$desktop-l: 1440px
 
 // Mixins
 @mixin flex-center
@@ -22,6 +31,12 @@ $transition: all 0.3s ease
 
 @mixin section-padding
   padding: 80px 0
+  
+  @media (max-width: $tablet)
+    padding: 60px 0
+  
+  @media (max-width: $mobile-l)
+    padding: 40px 0
 
 /* Base Styles */
 *
@@ -54,6 +69,12 @@ h1, h2, h3, h4, h5, h6
   max-width: 1200px
   margin: 0 auto
   padding: 0 15px
+  
+  @media (max-width: $tablet)
+    padding: 0 20px
+  
+  @media (max-width: $mobile-l)
+    padding: 0 15px
 
 img
   max-width: 100%
@@ -62,6 +83,9 @@ img
 .section-title
   text-align: center
   margin-bottom: 50px
+  
+  @media (max-width: $tablet)
+    margin-bottom: 30px
   
   &__tag
     display: block
@@ -78,6 +102,12 @@ img
     margin-bottom: 20px
     color: $secondary-color
     
+    @media (max-width: $tablet)
+      font-size: 30px
+    
+    @media (max-width: $mobile-l)
+      font-size: 24px
+    
     .bg-dark &
       color: $light-color
 
@@ -88,7 +118,11 @@ img
   border-radius: 50px
   font-weight: 500
   transition: $transition
-  text-align: right
+  text-align: center
+  
+  @media (max-width: $mobile-l)
+    padding: 8px 16px
+    font-size: 14px
   
   &--primary
     color: $light-color
@@ -124,7 +158,7 @@ img
   &__book
     display: none
     
-    @media (min-width: 992px)
+    @media (min-width: $laptop)
       display: block
 
   &-scrolled
@@ -137,9 +171,12 @@ img
   font-weight: 700
   color: $light-color
   text-decoration: none
+  
+  @media (max-width: $mobile-l)
+    font-size: 22px
 
 .nav
-  @media (max-width: 991px)
+  @media (max-width: $laptop)
     position: fixed
     top: 0
     right: -300px
@@ -149,6 +186,7 @@ img
     padding: 80px 30px
     transition: $transition
     z-index: 101
+    overflow-y: auto
     
     &.active
       right: 0
@@ -157,14 +195,15 @@ img
     display: flex
     list-style: none
     
-    @media (max-width: 991px)
+    @media (max-width: $laptop)
       flex-direction: column
+      gap: 15px
   
   &__item
     margin: 0 10px
     
-    @media (max-width: 991px)
-      margin: 15px 0
+    @media (max-width: $laptop)
+      margin: 5px 0
   
   &__link
     color: rgba($light-color, 0.7)
@@ -195,7 +234,7 @@ img
   font-size: 24px
   cursor: pointer
   
-  @media (max-width: 991px)
+  @media (max-width: $laptop)
     display: block
 
 /* Hero Section */
@@ -236,6 +275,14 @@ img
     align-items: flex-start
     min-height: 100vh
     padding: 120px 0
+    
+    @media (max-width: $tablet)
+      align-items: center
+      text-align: center
+      padding: 100px 0
+    
+    @media (max-width: $mobile-l)
+      padding: 80px 0
 
   &__title
     margin: 0 0 10px 0
@@ -247,10 +294,10 @@ img
     span
       color: $primary-color
 
-    @media (max-width: 768px)
+    @media (max-width: $tablet)
       font-size: 36px
 
-    @media (max-width: 576px)
+    @media (max-width: $mobile-l)
       font-size: 28px
 
   &__subtitle
@@ -258,18 +305,30 @@ img
     font-size: 18px
     margin-bottom: 30px
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)
+    
+    @media (max-width: $mobile-l)
+      font-size: 16px
+      margin-bottom: 20px
 
   &__buttons
     display: flex
     gap: 15px
     margin-bottom: 30px
 
-    @media (max-width: 576px)
+    @media (max-width: $mobile-l)
       flex-direction: column
-      gap: 10px
+      width: 100%
+      
+      .btn
+        width: 100%
+        justify-content: center
+        margin-bottom: 10px
 
   &__play
     margin-top: 15px
+    
+    @media (max-width: $tablet)
+      align-self: center
 
     a
       display: inline-flex
@@ -280,10 +339,17 @@ img
       border-radius: 50%
       background: $primary-color
       transition: $transition
+      
+      @media (max-width: $mobile-l)
+        width: 50px
+        height: 50px
 
     i
       color: $light-color
       font-size: 24px
+      
+      @media (max-width: $mobile-l)
+        font-size: 20px
 
   &__video-container
     position: fixed
@@ -306,6 +372,13 @@ img
       max-width: 900px
       border: 4px solid #fff
       border-radius: 10px
+      
+      @media (max-width: $tablet)
+        width: 90%
+      
+      @media (max-width: $mobile-l)
+        width: 95%
+        border: 2px solid #fff
 
     .btn--close
       margin-top: 20px
@@ -317,19 +390,24 @@ img
       border-radius: 5px
       cursor: pointer
       transition: $transition
+      
+      @media (max-width: $mobile-l)
+        font-size: 1rem
+        padding: 8px 16px
 
       &:hover
         background: darken($primary-color, 10%)
-
 
 /* About Section */
 .about
   @include section-padding
   position: relative
   overflow: hidden
-  min-height: 80vh // Augmente la hauteur de la section
+  min-height: 80vh
   
-  // L'image en arrière-plan
+  @media (max-width: $tablet)
+    min-height: auto
+  
   &::before
     content: ''
     position: absolute
@@ -337,10 +415,9 @@ img
     left: 0
     right: 0
     bottom: 0
-    background: rgba(0, 0, 0, 0.7) // Overlay sombre pour la lisibilité
+    background: rgba(0, 0, 0, 0.7)
     z-index: 1
   
-  // L'image about-bg.jpg en arrière-plan absolue
   &__background
     position: absolute
     top: 0
@@ -357,19 +434,29 @@ img
     align-items: center
     height: 100%
     
-    @media (max-width: 991px)
+    @media (max-width: $laptop)
       flex-direction: column
+      gap: 30px
   
   &__text
-    flex: 0 0 50% // Exactement 50% de l'écran à gauche
+    flex: 0 0 50%
     color: #fff
     padding-right: 30px
     max-width: 40%
+    
+    @media (max-width: $laptop)
+      flex: 0 0 100%
+      max-width: 100%
+      padding-right: 0
+      margin-bottom: 30px
   
   &__heading
     font-size: 28px
     font-weight: 700
     margin-bottom: 20px
+    
+    @media (max-width: $mobile-l)
+      font-size: 24px
   
   &__desc
     margin-bottom: 20px
@@ -394,11 +481,16 @@ img
       font-size: 18px
   
   &__image
-    flex: 0 0 50% // Exactement 50% de l'écran à droite
+    flex: 0 0 50%
     height: 100%
     max-width: 50%
     position: relative
-    overflow: hidden // pour éviter que l'image dépasse du cadre
+    overflow: hidden
+    
+    @media (max-width: $laptop)
+      flex: 0 0 100%
+      max-width: 100%
+      height: 400px
 
     img
       width: 100%
@@ -410,8 +502,9 @@ img
 
     &:hover
       img
-        transform: scale(1.1) // Zoom légèrement sur l'image
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) // Augmente l'ombre pour plus de profondeur
+        transform: scale(1.1)
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5)
+
 /* Why Us Section */
 .why-us
   @include section-padding
@@ -423,10 +516,10 @@ img
     grid-template-columns: repeat(3, 1fr)
     gap: 20px
     
-    @media (max-width: 991px)
+    @media (max-width: $laptop)
       grid-template-columns: repeat(2, 1fr)
     
-    @media (max-width: 768px)
+    @media (max-width: $mobile-l)
       grid-template-columns: 1fr
 
 .why-box
@@ -435,6 +528,9 @@ img
   border-radius: 5px
   text-align: center
   transition: $transition
+  
+  @media (max-width: $mobile-l)
+    padding: 30px 20px
 
   &__number
     font-size: 48px
@@ -442,6 +538,9 @@ img
     margin-bottom: 15px
     color: $primary-color
     display: block
+    
+    @media (max-width: $mobile-l)
+      font-size: 36px
 
   &__title,
   &__text
@@ -452,6 +551,9 @@ img
     font-size: 24px
     font-weight: 600
     margin-bottom: 15px
+    
+    @media (max-width: $mobile-l)
+      font-size: 20px
 
   &__text
     line-height: 1.6
@@ -459,117 +561,49 @@ img
   &:hover
     background-color: $primary-color
 
-    // changement de couleur pour les textes enfants au hover
     .why-box__title,
     .why-box__text,
     .why-box__number
       color: $light-color
 
-
 .section-title
-  text-align: left  // Aligne tout le bloc à gauche
+  text-align: left
+  
+  @media (max-width: $tablet)
+    text-align: center
   
   &__tag
-    color: #ffffff  // Met "WHY US" en blanc
-    text-align: left  // Assure l'alignement à gauche
+    color: #ffffff
+    text-align: left
+    
+    @media (max-width: $tablet)
+      text-align: center
   
   &__main
-    color: $primary-color  // Garde la couleur orange pour le titre principal
-    text-align: left  // Assure l'alignement à gauche
+    color: $primary-color
+    text-align: left
+    
+    @media (max-width: $tablet)
+      text-align: center
   
 /* Menu Section */
-// Utilisation de vos variables existantes
-// Variables
-$dark-color: #0c0b09
-$light-color: #fff
-$primary-color: #cda45e
-$gray-color: #aaa
-$transition: all 0.3s ease
-
-// Reset et styles de base
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
-
-body
-  font-family: 'Open Sans', sans-serif
-  background-color: $dark-color
-  color: $light-color
-  line-height: 1.6
-
-.container
-  width: 90%
-  max-width: 1200px
-  margin: 0 auto
-  padding: 0 15px
-
-a
-  text-decoration: none
-  color: $light-color
-  transition: $transition
-
-// Header/Navigation
-header
-  padding: 20px 0
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  z-index: 100
-  background-color: rgba(12, 11, 9, 0.9)
-
-  .container
-    display: flex
-    align-items: center
-    justify-content: space-between
-
-  .logo
-    font-size: 28px
-    font-weight: 700
-    letter-spacing: 1px
-    color: $light-color
-
-  nav ul
-    display: flex
-    list-style: none
-
-    li
-      margin: 0 15px
-
-      a
-        font-size: 14px
-        font-weight: 600
-        padding: 10px 0
-        text-transform: uppercase
-
-        &:hover,
-        &.active
-          color: $primary-color
-
-  .book-table
-    padding: 8px 24px
-    border: 2px solid $primary-color
-    color: $light-color
-    border-radius: 50px
-    font-weight: 500
-    font-size: 14px
-    text-transform: uppercase
-    transition: 0.3s
-
-    &:hover
-      background: $primary-color
-      color: $dark-color
-
-// Menu Section
 .menu
   padding: 120px 0 60px
   background: $dark-color
   color: $light-color
+  
+  @media (max-width: $tablet)
+    padding: 90px 0 50px
+  
+  @media (max-width: $mobile-l)
+    padding: 80px 0 40px
 
   .section-title
     text-align: center
     margin-bottom: 40px
+    
+    @media (max-width: $mobile-l)
+      margin-bottom: 30px
 
     &__tag
       display: block
@@ -582,17 +616,24 @@ header
       font-size: 42px
       color: $primary-color
       font-weight: 400
+      
+      @media (max-width: $tablet)
+        font-size: 36px
+      
+      @media (max-width: $mobile-l)
+        font-size: 28px
 
-  // Cacher les cases à cocher
   .filter-checkbox
     position: absolute
     opacity: 0
     pointer-events: none
 
-  // Styles du filtre
   .menu-filter
     text-align: center
     margin-bottom: 40px
+    
+    @media (max-width: $mobile-l)
+      margin-bottom: 30px
 
     ul
       display: flex
@@ -600,9 +641,16 @@ header
       list-style: none
       padding: 0
       margin: 0
+      flex-wrap: wrap
+      
+      @media (max-width: $mobile-l)
+        gap: 5px
 
     li
       margin: 0 10px
+      
+      @media (max-width: $mobile-l)
+        margin: 5px
 
     label
       cursor: pointer
@@ -612,34 +660,35 @@ header
       font-weight: 500
       color: $light-color
       transition: $transition
+      
+      @media (max-width: $mobile-l)
+        padding: 6px 12px
+        font-size: 14px
 
       &:hover
         color: $primary-color
 
-  // Grille d'éléments du menu
   .menu-items
     display: grid
     grid-template-columns: repeat(2, 1fr)
     gap: 30px
-
-    @media (max-width: 768px)
+    
+    @media (max-width: $tablet)
+      gap: 20px
+    
+    @media (max-width: $mobile-l)
       grid-template-columns: 1fr
 
-  // Styles par défaut pour les éléments du menu
   .menu-item
     display: none
     opacity: 0
     transition: opacity 0.4s ease, transform 0.3s ease
     transform: translateY(20px)
     align-items: center
+    
+    @media (max-width: $mobile-l)
+      padding-bottom: 15px
 
-    // Par défaut, montrer tous les éléments avec la classe "all"
-    &.all
-      display: flex
-      opacity: 1
-      transform: translateY(0)
-
-    // Styliser l'image du menu
     &__image
       width: 80px
       height: 80px
@@ -648,24 +697,31 @@ header
       margin-right: 20px
       flex-shrink: 0
       border: 4px solid rgba(255, 255, 255, 0.1)
+      
+      @media (max-width: $mobile-l)
+        width: 60px
+        height: 60px
+        margin-right: 15px
 
       img
         width: 100%
         height: 100%
         object-fit: cover
 
-    // Styliser le contenu du menu
     &__content
       flex: 1
       position: relative
 
-    // Styliser le titre
     &__title
       font-weight: 600
       font-size: 18px
       color: $light-color
       position: relative
       padding-right: 70px
+      
+      @media (max-width: $mobile-l)
+        font-size: 16px
+        padding-right: 60px
 
       &::after
         content: ""
@@ -674,8 +730,11 @@ header
         right: 60px
         top: 50%
         border-top: 1px dotted $gray-color
+        
+        @media (max-width: $mobile-l)
+          left: calc(100% - 50px)
+          right: 50px
 
-    // Styliser le prix
     &__price
       position: absolute
       color: $primary-color
@@ -684,40 +743,40 @@ header
       font-weight: 700
       color: $primary-color
       font-size: 18px
+      
+      @media (max-width: $mobile-l)
+        font-size: 16px
 
-    // Styliser la description
     &__desc
       font-style: italic
       font-size: 14px
       color: $gray-color
       margin-top: 5px
+      
+      @media (max-width: $mobile-l)
+        font-size: 13px
 
-.section-title
-  text-align: left
-  margin-bottom: 40px
-  
-  &__tag
-    color: $light-color
-    text-transform: uppercase
-    font-size: 14px
-    font-weight: 500
-    position: relative
-    padding-left: 10px
-    letter-spacing: 2px
-    display: inline-block
-    margin-bottom: 15px
-    text-align: left
-  
-  &__main
-    color: $primary-color
-    font-size: 36px
-    font-weight: 700
-    position: relative
-    font-family: $font-secondary
-    text-align: left
-    
-    &:hover
-      color: $primary-color
+#filter-all:checked ~ .menu-items .menu-item,
+#filter-starters:checked ~ .menu-items .menu-item.starters,
+#filter-salads:checked ~ .menu-items .menu-item.salads,
+#filter-specialty:checked ~ .menu-items .menu-item.specialty
+  display: flex
+  opacity: 1
+  transform: translateY(0)
+
+#filter-starters:checked ~ .menu-items .menu-item:not(.starters),
+#filter-salads:checked ~ .menu-items .menu-item:not(.salads),
+#filter-specialty:checked ~ .menu-items .menu-item:not(.specialty)
+  display: none
+  opacity: 0
+  transform: translateY(20px)
+
+#filter-all:checked ~ .menu-filter label[for="filter-all"],
+#filter-starters:checked ~ .menu-filter label[for="filter-starters"],
+#filter-salads:checked ~ .menu-filter label[for="filter-salads"],
+#filter-specialty:checked ~ .menu-filter label[for="filter-specialty"]
+  color: $primary-color
+  font-weight: 700
 
 /* Events Section */
 .events
@@ -734,7 +793,7 @@ header
     left: 0
     width: 100%
     height: 100%
-    background-color: rgba(0, 0, 0, 0.6) // ombre sombre
+    background-color: rgba(0, 0, 0, 0.6)
     z-index: 1
 
   .container
@@ -760,6 +819,9 @@ header
     display: flex
     flex-wrap: wrap
     gap: 30px
+    
+    @media (max-width: $mobile-l)
+      gap: 20px
   
   &__image
     flex: 1 1 450px
@@ -769,15 +831,18 @@ header
       height: 400px
       object-fit: cover
       border-radius: 8px
+      
+      @media (max-width: $mobile-l)
+        height: 300px
     
-    @media (max-width: 992px)
+    @media (max-width: $laptop)
       flex: 1 1 100%
   
   &__content
     flex: 1 1 450px
     padding: 0 0 0 30px
     
-    @media (max-width: 992px)
+    @media (max-width: $laptop)
       padding: 30px 0 0
       flex: 1 1 100%
   
@@ -785,6 +850,9 @@ header
     color: $primary-color
     font-size: 24px
     margin-bottom: 10px
+    
+    @media (max-width: $mobile-l)
+      font-size: 20px
   
   &__price
     font-size: 20px
@@ -792,6 +860,9 @@ header
     font-weight: 600
     display: block
     margin-bottom: 15px
+    
+    @media (max-width: $mobile-l)
+      font-size: 18px
   
   &__desc
     margin-bottom: 15px
@@ -841,14 +912,21 @@ header
     display: flex
     flex-wrap: wrap
     margin: 0 -10px 20px
+    
+    @media (max-width: $mobile-l)
+      margin: 0 -5px 10px
 
-    @media (max-width: 576px)
+    @media (max-width: $mobile-s)
       flex-direction: column
 
   &__group
     flex: 1 1 300px
     padding: 0 10px
     margin-bottom: 20px
+    
+    @media (max-width: $mobile-l)
+      flex: 1 1 100%
+      padding: 0 5px
 
   &__input,
   &__textarea
@@ -861,6 +939,9 @@ header
     transition: $transition
     border: solid 1px $primary-color 
     border-color: rgba($primary-color, 0.5)
+    
+    @media (max-width: $mobile-l)
+      padding: 10px 12px
 
     &::placeholder
       color: rgba($light-color, 0.7)
@@ -887,7 +968,13 @@ header
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
     gap: 3px
     
-    @media (max-width: 576px)
+    @media (max-width: $tablet)
+      grid-template-columns: repeat(3, 1fr)
+    
+    @media (max-width: $mobile-l)
+      grid-template-columns: repeat(2, 1fr)
+    
+    @media (max-width: $mobile-s)
       grid-template-columns: 1fr
 
 .gallery-item
@@ -904,8 +991,6 @@ header
       transform: scale(1.1)
 
 /* Chefs Section */
-$transition: all 0.7s ease-in-out;
-
 .chefs
   @include section-padding
   background-color: $dark-color
@@ -915,7 +1000,11 @@ $transition: all 0.7s ease-in-out;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
     gap: 30px
     
-    @media (max-width: 576px)
+    @media (max-width: $tablet)
+      grid-template-columns: repeat(2, 1fr)
+      gap: 20px
+    
+    @media (max-width: $mobile-l)
       grid-template-columns: 1fr
 
 .chef
@@ -931,12 +1020,18 @@ $transition: all 0.7s ease-in-out;
       width: 100%
       height: 500px
       object-fit: cover
-      transition: $transition
-      filter: brightness(1) // Réinitialisation de la luminosité pour l'effet hover
+      transition: all 0.7s ease-in-out
+      filter: brightness(1)
+      
+      @media (max-width: $tablet)
+        height: 400px
+      
+      @media (max-width: $mobile-l)
+        height: 350px
       
     &:hover
       img
-        filter: brightness(0.5) // Assombrissement de l'image au survol
+        filter: brightness(0.5)
 
     .chef__info
       position: absolute
@@ -948,26 +1043,31 @@ $transition: all 0.7s ease-in-out;
       opacity: 0
       visibility: hidden
       transition: opacity 0.3s, visibility 0.3s
+      width: 90%
 
       h3, p
         margin: 5px 0
       
       .socials
         margin-top: 10px
+        display: flex
+        justify-content: center
+        gap: 10px
 
         .social-icon
-          margin: 0 10px
+          margin: 0 5px
           color: white
           text-decoration: none
           font-size: 1.2rem
+          
+          @media (max-width: $mobile-l)
+            font-size: 1rem
       
   &:hover
     .chef__image
       .chef__info
         opacity: 1
         visibility: visible
-
-  
 
 /* Contact Section */
 .contact
@@ -981,6 +1081,10 @@ $transition: all 0.7s ease-in-out;
     overflow: hidden
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
     
+    @media (max-width: $mobile-l)
+      height: 300px
+      margin-bottom: 30px
+    
     iframe
       width: 100%
       height: 100%
@@ -991,14 +1095,20 @@ $transition: all 0.7s ease-in-out;
     flex-wrap: wrap
     gap: 30px
     
-    @media (max-width: 992px)
+    @media (max-width: $laptop)
       flex-direction: column
   
   &__info
     flex: 1 1 350px
+    
+    @media (max-width: $laptop)
+      flex: 1 1 100%
   
   &__form
     flex: 1 1 500px
+    
+    @media (max-width: $laptop)
+      flex: 1 1 100%
     
     .form__input, .form__textarea
       background-color: #fff
@@ -1012,6 +1122,11 @@ $transition: all 0.7s ease-in-out;
   display: flex
   margin-bottom: 30px
   
+  @media (max-width: $mobile-s)
+    flex-direction: column
+    align-items: center
+    text-align: center
+  
   i
     width: 44px
     height: 44px
@@ -1024,6 +1139,10 @@ $transition: all 0.7s ease-in-out;
     font-size: 20px
     margin-right: 15px
     flex-shrink: 0
+    
+    @media (max-width: $mobile-s)
+      margin-right: 0
+      margin-bottom: 10px
   
   div
     h5
@@ -1049,6 +1168,9 @@ $transition: all 0.7s ease-in-out;
   padding: 60px 0 0
   color: $gray-color
   
+  @media (max-width: $mobile-l)
+    padding: 40px 0 0
+  
   &__content
     display: flex
     flex-wrap: wrap
@@ -1056,210 +1178,6 @@ $transition: all 0.7s ease-in-out;
     margin-bottom: 30px
     gap: 30px
     
-    @media (max-width: 768px)
+    @media (max-width: $tablet)
       flex-direction: column
-      text-align: center
-  
-  &__info
-    flex: 1 1 300px
-  
-  &__logo
-    font-size: 28px
-    color: $primary-color
-    margin-bottom: 15px
-    font-family: $font-secondary
-  
-  &__address
-    margin-bottom: 15px
-  
-  &__contact
-    margin-bottom: 20px
-    
-    strong
-      color: $light-color
-    
-    a
-      color: $gray-color
-      
-      &:hover
-        color: $primary-color
-  
-  &__social
-    display: flex
-    gap: 10px
-    
-    @media (max-width: 768px)
-      justify-content: center
-    
-    a
-      display: flex
-      align-items: center
-      justify-content: center
-      width: 36px
-      height: 36px
-      background: rgba(255, 255, 255, 0.08)
-      border-radius: 50%
-      color: $light-color
-      transition: $transition
-      
-      &:hover
-        background: $primary-color
-  
-  &__links
-    flex: 1 1 200px
-    
-    h4
-      color: $light-color
-      font-size: 18px
-      margin-bottom: 20px
-      position: relative
-      padding-bottom: 10px
-      
-      &:after
-        content: ''
-        position: absolute
-        display: block
-        width: 50px
-        height: 2px
-        background: $primary-color
-        bottom: 0
-        left: 0
-        
-        @media (max-width: 768px)
-          left: 50%
-          transform: translateX(-50%)
-    
-    ul
-      list-style: none
-      
-      li
-        margin-bottom: 10px
-        
-        a
-          color: $gray-color
-          transition: $transition
-          
-          &:hover
-            color: $primary-color
-            padding-left: 5px
-  
-  &__newsletter
-    flex: 1 1 300px
-    
-    h4
-      color: $light-color
-      font-size: 18px
-      margin-bottom: 20px
-      position: relative
-      padding-bottom: 10px
-      
-      &:after
-        content: ''
-        position: absolute
-        display: block
-        width: 50px
-        height: 2px
-        background: $primary-color
-        bottom: 0
-        left: 0
-        
-        @media (max-width: 768px)
-          left: 50%
-          transform: translateX(-50%)
-    
-    p
-      margin-bottom: 20px
-  
-  &__bottom
-    text-align: center
-    padding: 30px 0
-    border-top: 1px solid rgba(255, 255, 255, 0.1)
-    
-    p
-      margin-bottom: 10px
-      
-      strong
-        color: $primary-color
-  
-  &__credits
-    a
-      color: $gray-color
-      
-      &:hover
-        color: $primary-color
-
-.newsletter-form
-  position: relative
-  
-  input
-    height: 42px
-    width: 100%
-    padding: 0 15px
-    border: 1px solid rgba(255, 255, 255, 0.1)
-    background: rgba(255, 255, 255, 0.05)
-    color: $light-color
-    border-radius: 50px
-    transition: $transition
-    
-    &:focus
-      outline: none
-      border-color: $primary-color
-  
-  button
-    position: absolute
-    right: 0
-    top: 0
-    height: 42px
-    padding: 0 15px
-    background: $primary-color
-    border: none
-    border-radius: 0 50px 50px 0
-    color: $light-color
-    transition: $transition
-    
-    &:hover
-      background: darken($primary-color, 10%)
-
-.back-to-top
-  position: fixed
-  right: 15px
-  bottom: 15px
-  width: 40px
-  height: 40px
-  background: $primary-color
-  color: $light-color
-  border-radius: 50%
-  display: flex
-  align-items: center
-  justify-content: center
-  z-index: 99
-  transition: $transition
-  visibility: hidden
-  opacity: 0
-  
-  &.active
-    visibility: visible
-    opacity: 1
-  
-  &:hover
-    background: darken($primary-color, 10%)
-
-
-#scrollToTopBtn
-  position: fixed
-  bottom: 20px
-  right: 20px
-  background-color: $primary-color
-  color: white
-  text-decoration: none
-  border: none
-  border-radius: 50px
-  padding: 10px 20px
-  font-size: 16px
-  cursor: pointer
-  display: none 
-  z-index: 2
-
-  &:hover
-    background-color: #ffffff
-    color: $primary-color
+      text

@@ -2,9 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const files = [
-  'index.html',
-  'script.js',
-  'style.scss'
+  'style.sass',
+  'index.html'
 ];
 
 function randomComment() {
