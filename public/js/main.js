@@ -17,58 +17,72 @@
   });
 
   document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionner tous les éléments de filtre
-    const filterItems = document.querySelectorAll('.menu-filter li');
-    // Sélectionner tous les éléments du menu
+    // Sélectionner tous les éléments nécessaires
+    const filterInputs = document.querySelectorAll('.filter-checkbox');
     const menuItems = document.querySelectorAll('.menu-item');
+    const filterLabels = document.querySelectorAll('.menu-filter label');
     
-    // Ajouter un écouteur de clic à chaque élément de filtre
-    filterItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Supprimer la classe active de tous les filtres
-            filterItems.forEach(filter => {
-                filter.classList.remove('filter-active');
-                filter.setAttribute('aria-selected', 'false');
-            });
-            
-            // Ajouter la classe active au filtre cliqué
-            this.classList.add('filter-active');
-            this.setAttribute('aria-selected', 'true');
-            
-            // Obtenir la valeur du filtre
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Afficher/masquer les éléments de menu en fonction du filtre
-            menuItems.forEach(menuItem => {
-                // Masquer d'abord tous les éléments avec une transition d'opacité
-                menuItem.style.opacity = '0';
-                menuItem.style.transition = 'opacity 0.3s ease';
-                
-                setTimeout(() => {
-                    if (filterValue === 'all' || menuItem.classList.contains(filterValue)) {
-                        menuItem.style.display = 'flex';
-                        setTimeout(() => {
-                            menuItem.style.opacity = '1';
-                        }, 50);
-                    } else {
-                        menuItem.style.display = 'none';
-                    }
-                }, 300); // Attendre que l'animation d'opacité soit terminée
-            });
+    // Fonction pour afficher les éléments du menu en fonction du filtre sélectionné
+    function filterMenu(filterValue) {
+      // Réinitialiser tous les éléments d'accessibilité
+      filterLabels.forEach(label => {
+        label.setAttribute('aria-selected', 'false');
+      });
+      
+      // Marquer le filtre actif comme sélectionné
+      document.querySelector(`label[for="${filterValue}"]`).setAttribute('aria-selected', 'true');
+      
+      // Cacher d'abord tous les éléments
+      menuItems.forEach(item => {
+        item.style.display = 'none';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+      });
+      
+      // Déterminer quels éléments afficher
+      let itemsToShow;
+      if (filterValue === 'filter-all') {
+        itemsToShow = menuItems;
+      } else {
+        const category = filterValue.replace('filter-', '');
+        itemsToShow = document.querySelectorAll(`.menu-item.${category}`);
+      }
+      
+      // Afficher les éléments avec une animation
+      setTimeout(() => {
+        itemsToShow.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.display = 'flex';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            }, 10);
+          }, index * 100); // Délai progressif pour une animation en cascade
         });
+      }, 50);
+    }
+    
+    // Ajouter les écouteurs d'événements aux boutons de filtrage
+    filterInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        filterMenu(this.id);
+      });
     });
     
-    // Ajouter la navigation au clavier pour l'accessibilité
-    filterItems.forEach(item => {
-        item.addEventListener('keydown', function(e) {
-            // Activer le filtre avec la touche Entrée ou Espace
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
+    // Gérer la navigation au clavier pour l'accessibilité
+    filterLabels.forEach(label => {
+      label.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          document.getElementById(this.getAttribute('for')).checked = true;
+          filterMenu(this.getAttribute('for'));
+        }
+      });
     });
-});
+    
+    // Initialiser le menu avec le filtre "All" sélectionné par défaut
+    filterMenu('filter-all');
+  });
 
 window.onscroll = function() {
   var button = document.getElementById("scrollToTopBtn");

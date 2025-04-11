@@ -756,27 +756,7 @@ img
       @media (max-width: $mobile-l)
         font-size: 13px
 
-#filter-all:checked ~ .menu-items .menu-item,
-#filter-starters:checked ~ .menu-items .menu-item.starters,
-#filter-salads:checked ~ .menu-items .menu-item.salads,
-#filter-specialty:checked ~ .menu-items .menu-item.specialty
-  display: flex
-  opacity: 1
-  transform: translateY(0)
 
-#filter-starters:checked ~ .menu-items .menu-item:not(.starters),
-#filter-salads:checked ~ .menu-items .menu-item:not(.salads),
-#filter-specialty:checked ~ .menu-items .menu-item:not(.specialty)
-  display: none
-  opacity: 0
-  transform: translateY(20px)
-
-#filter-all:checked ~ .menu-filter label[for="filter-all"],
-#filter-starters:checked ~ .menu-filter label[for="filter-starters"],
-#filter-salads:checked ~ .menu-filter label[for="filter-salads"],
-#filter-specialty:checked ~ .menu-filter label[for="filter-specialty"]
-  color: $primary-color
-  font-weight: 700
 
 /* Events Section */
 .events
