@@ -82,15 +82,3 @@ window.onscroll = function() {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-
-  // a supprimer
-  setInterval(() => {
-    const random = Math.floor(Math.random() * 100);
-    console.log("Fake activity n°" + random);
-  
-    // Modifier dynamiquement un élément
-    const title = document.getElementById("title");
-    title.innerText = "WakaTime Boost #" + random;
-  }, 30000); // toutes les 30 secondes
-  
